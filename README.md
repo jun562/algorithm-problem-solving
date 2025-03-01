@@ -1,2 +1,3 @@
 # 알고리즘 문제 해결
-This is an auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+프로그래머스와 백준 페이지에서 푼 문제 수록
+내가 푼 문제와 해결법들 기록하기
