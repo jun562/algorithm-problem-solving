@@ -32,7 +32,7 @@ public class Main {
         }
 
         for (int n : numbers2) {
-            bw.write(match.get(n) + "\n");
+            bw.write(match.get(n) + " ");
         }
         bw.flush();
     }
