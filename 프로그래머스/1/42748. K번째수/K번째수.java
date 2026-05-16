@@ -3,19 +3,20 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
-        
-        for(int i = 0; i < commands.length; i++){
-            int start = commands[i][0];
-            int end = commands[i][1];
-            int order = commands[i][2];
-            int[] temp = new int[end-start+1];
-            int k = 0;
-            for (int j = start-1; j <= end-1; j++,k++){
-                temp[k] = array[j];
+        for(int n = 0; n < commands.length; n++){
+            int i = commands[n][0];
+            int j = commands[n][1];
+            int k = commands[n][2];
+            int[] slice = new int[j-i+1];
+            int order = 0;
+            for(int l = i - 1; l < j; l++ ){
+                slice[order] = array[l];
+                order++;
             }
-            Arrays.sort(temp);
-            answer[i] = temp[order-1];
+            Arrays.sort(slice);
+            answer[n] = slice[k-1];
         }
+        
         return answer;
     }
 }
