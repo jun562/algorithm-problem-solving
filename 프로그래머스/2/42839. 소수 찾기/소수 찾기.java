@@ -1,53 +1,49 @@
 import java.util.*;
 
 class Solution {
-    static boolean[] visited; // 숫자 카드의 사용 여부 체크
-    static String[] arr;      // 분리된 숫자 카드들을 담을 배열
-    static Set<Integer> nums = new HashSet<>(); // 중복 없는 숫자들의 집합
+    static boolean[] visited;
+    static String[] nums;
+    static Set<Integer> set = new HashSet<>();
     
     public int solution(String numbers) {
         int answer = 0;
-        
-        arr = numbers.split(""); 
-        visited = new boolean[arr.length];
-        
-        for (int i = 1; i <= arr.length; i++) {
-            backtrack(i, 0, "");
+        nums = numbers.split("");
+        visited = new boolean[nums.length];
+        for(int i = 1; i <= nums.length; i++){
+            backtrack(i,0,"");
         }
- 
-        for (int num : nums) {
-            if (num < 2) {
+        for(int s : set){
+            if (s < 2){
                 continue;
             }
             
             boolean isPrime = true;
             
-            for (int i = 2; i * i <= num; i++) {
-                if (num % i == 0) {
-                    isPrime = false; 
+            for(int i = 2; i * i <= s; i++){
+                if(s % i == 0){
+                    isPrime = false;
                     break;
                 }
             }
-        
-            if (isPrime) {
-                answer++;
+            if(isPrime){
+                answer ++ ;
             }
         }
         
         return answer;
     }
     
-    public static void backtrack(int targetLength, int depth, String currentStr) {
-        if (depth == targetLength) {
-            nums.add(Integer.parseInt(currentStr)); 
-            return; 
+    static void backtrack(int targetLength, int depth, String s){
+        if(targetLength == depth){
+            set.add(Integer.parseInt(s));
+            return;
         }
         
-        for (int j = 0; j < arr.length; j++) {
-            if (!visited[j]) {
-                visited[j] = true; 
-                backtrack(targetLength, depth + 1, currentStr + arr[j]);
-                visited[j] = false; 
+        for(int i = 0; i<nums.length; i++){
+            if(!visited[i]){
+                visited[i] = true;
+                backtrack(targetLength, depth + 1, s + nums[i]);
+                visited[i] = false;
             }
         }
     }
