@@ -5,17 +5,14 @@ class Solution {
         int answer = 0;
         int[] cloth = new int[n+2]; //양끝 비우기
         for(int i = 1; i <= n; i++){
-            cloth[i] = 1;
-            for(int j = 0; j < lost.length; j++){
-                if(i== lost[j]){
-                    cloth[i] --;
-                }
-            }
-            for(int k = 0; k < reserve.length; k++){
-                if(i == reserve[k]){
-                    cloth[i] ++;
-                }
-            }
+            cloth[i] = 1; 
+        }
+        
+        for(int i = 0; i < lost.length; i++){
+            cloth[lost[i]] --;        
+        }
+        for(int i = 0; i < reserve.length; i++){
+            cloth[reserve[i]] ++;
         }
         for(int i = 1; i <= n; i++){
             if(cloth[i] == 0 && cloth[i-1] == 2){
