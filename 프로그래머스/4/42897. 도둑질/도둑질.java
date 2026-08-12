@@ -7,7 +7,7 @@ class Solution {
         int[] dpSecond = new int[n];
         
         dpFirst[0] = money[0];
-        dpFirst[1] = Math.max(money[0],money[1]);
+        dpFirst[1] = money[0];
         
         dpSecond[0] = 0;
         dpSecond[1] = money[1];
